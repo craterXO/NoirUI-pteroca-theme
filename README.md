@@ -26,21 +26,52 @@ A modern, minimal theme for PteroCA with a clean design and improved user experi
 
 ## Installation
 
+### Auto Installer (Recommended)
+
+The easiest way to install NoirUI theme:
+
+```bash
+git clone https://github.com/craterXO/NoirUI-pteroca-theme.git
+cd NoirUI-pteroca-theme
+chmod +x install.sh
+sudo ./install.sh
+```
+
+The installer will:
+- Auto-detect your PteroCA installation
+- Backup existing theme (if present)
+- Copy all theme files
+- Set proper permissions
+- Clear all caches (Symfony, OPcache, Twig)
+- Provide clear next steps
+
+### Manual Installation
+
+If you prefer to install manually:
+
 1. **Copy theme files**:
    ```bash
    cp -r themes/noirui /path/to/pteroca/themes/
    cp -r public/assets/theme/noirui /path/to/pteroca/public/assets/theme/
    ```
 
-2. **Set as active theme**:
+2. **Set proper permissions**:
+   ```bash
+   chown -R www-data:www-data /path/to/pteroca/themes/noirui
+   chown -R www-data:www-data /path/to/pteroca/public/assets/theme/noirui
+   ```
+
+3. **Clear cache**:
+   ```bash
+   cd /path/to/pteroca
+   php bin/console cache:clear
+   php bin/console cache:warmup
+   ```
+
+4. **Set as active theme**:
    - Go to Admin Panel > Settings > Theme Settings
    - Select "NoirUI" from the theme dropdown
    - Save changes
-
-3. **Clear cache** (if needed):
-   ```bash
-   php bin/console cache:clear
-   ```
 
 ## File Structure
 
@@ -73,7 +104,7 @@ NoirUI-pteroca-theme/
 
 ## Credits
 
-- **Theme Design**: NoirUI Team
+- **Theme Design**: Mason
 - **Font**: Satoshi by Indian Type Foundry
 - **Icons**: Lucide Icons (https://lucide.dev/)
 - **Avatar API**: DiceBear Glass Style (https://www.dicebear.com/styles/glass/)
